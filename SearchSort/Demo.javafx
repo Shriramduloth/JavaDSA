@@ -1,0 +1,30 @@
+import javafx.application.Application;
+import javafx.scene.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Box;
+import javafx.stage.Stage;
+
+public class Demo extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        Box box = new Box(100, 100, 100);
+        box.setMaterial(new PhongMaterial(Color.RED));
+
+        Group root = new Group(box);
+        Scene scene = new Scene(root, 400, 300, true);
+        scene.setFill(Color.BLACK);
+
+        PerspectiveCamera camera = new PerspectiveCamera(true);
+        camera.setTranslateZ(-200);
+        scene.setCamera(camera);
+
+        primaryStage.setTitle("Simple 3D Example");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
